@@ -96,7 +96,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" form="myform" class="btn btn-primary" onclick="createPost()">Create</button>
+        <button type="button" form="myform" class="btn btn-primary" id="idButton" >Create</button>
       </div>
     </div>
   </div>
@@ -181,9 +181,10 @@ p.innerHTML=`
 document.body.appendChild(p);
 });
 
-function createPost(){
-await setDoc(doc(db, "posts", "post3"), {
- title:"post3",
+ async function createPost(){
+  console.log("create the post")
+await setDoc(doc(db, "posts", `post- ${Math.floor(Math.random()*100000000)+1}`), {
+ title:`post-${Math.floor(Math.random()*100)+1}`,
  author:"omaran",
  content:"this is the content",
  likes:0,
@@ -192,7 +193,9 @@ await setDoc(doc(db, "posts", "post3"), {
  edited:new Date(0)
 });
 }
-
+document.getElementById("idButton").onclick=async ()=>{
+            await createPost();
+        };
     </script>
 
 </body>
