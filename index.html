@@ -107,10 +107,12 @@ let p = document.createElement("p");
 p.innerHTML=`
 <div class="container">
 <div class="row">
-<div class="col-2">author: ${doc.data().author}</div>
+<div class="col-12 text-left border"><h1> ${doc.data().title}</h1></div>
+</div>
+<div class="row">
+<div class="col-12 text-left"><p>${doc.data().content}</div>
 
- </div>
-
+</div>
 </div>
 `
 document.body.appendChild(p);
