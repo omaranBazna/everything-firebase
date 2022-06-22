@@ -117,6 +117,17 @@ p.innerHTML=`
 <div class="col-2 mr-auto">
 <p>author:${doc.data().author}</p>
   </div>
+  <div class="col-2">
+      <div class="row">
+             <div class="col-6">
+              ${doc.data().likes} Likes
+              </div>
+              <div class="col-6">
+                ${doc.data().dislikes} Dislikes
+              </div>
+              
+      </div>
+    </div>
   <div class="col-2 ml-auto">
 <p>created @:${new Date(doc.data().created*1000).getDate()+
           "/"+(new Date(doc.data().created*1000).getMonth()+1)+"/2022"}</p>
