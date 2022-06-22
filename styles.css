@@ -24,3 +24,7 @@ a,a:hover{
 .red:hover{
     color:rgb(255, 109, 109);
 }
+textarea{
+    width:100%;
+    resize: none;
+}
