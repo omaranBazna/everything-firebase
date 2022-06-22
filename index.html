@@ -96,7 +96,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" form="myform" class="btn btn-primary">Create</button>
+        <button type="submit" form="myform" class="btn btn-primary" onclick="createPost()">Create</button>
       </div>
     </div>
   </div>
@@ -120,7 +120,7 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-app.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-analytics.js";
 
-    import {getFirestore, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-firestore.js";
+    import {getFirestore, collection, query, where, getDocs,doc, setDoc } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-firestore.js";
     // TODO: Add SDKs for Firebase products that you want to use
     // https://firebase.google.com/docs/web/setup#available-libraries
   
@@ -181,6 +181,17 @@ p.innerHTML=`
 document.body.appendChild(p);
 });
 
+function createPost(){
+await setDoc(doc(db, "posts", "post3"), {
+ title:"post3",
+ author:"omaran",
+ content:"this is the content",
+ likes:0,
+ dislikes:0,
+ created:new Date(0),
+ edited:new Date(0)
+});
+}
 
     </script>
 
