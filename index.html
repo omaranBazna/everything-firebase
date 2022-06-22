@@ -113,6 +113,15 @@ p.innerHTML=`
 <div class="col-12 text-left border"><p>${doc.data().content}</div>
 
 </div>
+<div class="row border bg-secondary text-white">
+<div class="col-2 mr-auto">
+<p>author:${doc.data().author}</p>
+  </div>
+  <div class="col-2 ml-auto">
+<p>created @:${new Date(doc.data().created*1000).getDate()+
+          "/"+(new Date(doc.data().created*1000).getMonth()+1)+"/2022"}</p>
+  </div>
+</div>
 </div>
 `
 document.body.appendChild(p);
