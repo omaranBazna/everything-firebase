@@ -118,7 +118,7 @@ p.innerHTML=`
 </div>
 <div class="row border bg-secondary text-white">
 <div class="col-2 mr-auto">
-<p>author:${doc.data().author}</p>
+<p>${doc.data().author}</p>
   </div>
   <div class="col-2 mr-auto text-nowrap">
       <div class="row">
@@ -132,7 +132,7 @@ p.innerHTML=`
       </div>
     </div>
   <div class="col-2 ml-auto">
-<p>created @:${new Date(doc.data().created*1000).getDate()+
+<p> @${new Date(doc.data().created*1000).getDate()+
           "/"+(new Date(doc.data().created*1000).getMonth()+1)+"/2022"}</p>
   </div>
 </div>
