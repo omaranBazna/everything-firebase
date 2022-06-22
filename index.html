@@ -140,8 +140,9 @@
     const analytics = getAnalytics(app);
     const db = getFirestore(app);
     const posts=collection(db,"posts")
+      const q = query(posts, orderBy("created"));
+    const querySnapshot = await getDocs(q);
   
-const querySnapshot = await getDocs(posts);
 querySnapshot.forEach((doc) => {
 // doc.data() is never undefined for query doc snapshots
 console.log(doc.id, " => ", doc.data());
