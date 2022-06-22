@@ -12,7 +12,15 @@ a,a:hover{
 }
 .green{
     color:rgb(33, 217, 33);
+    cursor:pointer;
 }
 .red{
     color:red;
+    cursor:pointer;
+}
+.green:hover{
+    color:rgb(114, 233, 114);
+}
+.red:hover{
+    color:rgb(255, 109, 109);
 }
