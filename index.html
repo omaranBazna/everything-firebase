@@ -94,9 +94,14 @@
       const app = initializeApp(firebaseConfig);
       const analytics = getAnalytics(app);
       const posts=collection(app,"posts")
-      const docRef = doc(db, "posts", "SF");
-      const docSnap = await getDoc(docRef);
- 
+    
+const querySnapshot = await getDocs(posts);
+querySnapshot.forEach((doc) => {
+  // doc.data() is never undefined for query doc snapshots
+  console.log(doc.id, " => ", doc.data());
+});
+
+      
     </script>
 
 </body>
