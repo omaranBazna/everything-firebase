@@ -95,7 +95,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" form="myform" class="btn btn-primary" id="idButton" >Create</button>
+        <button type="button" form="myform"  data-dismiss="modal"  class="btn btn-primary" id="idButton" >Create</button>
       </div>
     </div>
   </div>
@@ -119,7 +119,7 @@
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-app.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-analytics.js";
 
-    import {getFirestore, collection, query, where, getDocs,doc, setDoc } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-firestore.js";
+    import {getFirestore, collection, query, where, getDocs,doc, setDoc,Timestamp } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-firestore.js";
     // TODO: Add SDKs for Firebase products that you want to use
     // https://firebase.google.com/docs/web/setup#available-libraries
   
@@ -182,7 +182,7 @@ document.body.appendChild(p);
 const title=document.getElementById("title");
 const content=document.getElementById("contentTextArea");
  async function createPost(){
-  console.log("create the post")
+ console.log(Timestamp.now())
 await setDoc(doc(db, "posts", `post- ${Math.floor(Math.random()*100000000)+1}`), {
  title:`${title.value}`,
  author:"omaran",
