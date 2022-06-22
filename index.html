@@ -142,11 +142,17 @@
     const posts=collection(db,"posts")
       const q = query(posts, orderBy("created"));
     const querySnapshot = await getDocs(q);
-    querySnapshot.reverse();
+ 
+    let docArray=[]
 querySnapshot.forEach((doc) => {
 // doc.data() is never undefined for query doc snapshots
-console.log(doc.id, " => ", doc.data());
-let p = document.createElement("p");
+
+docArray.push(doc);
+});
+docArray.reverse();
+docArray.forEach((doc)=>{
+
+  let p = document.createElement("p");
 p.innerHTML=`
 <div class="container">
 <div class="row">
@@ -179,7 +185,7 @@ p.innerHTML=`
 </div>
 `
 document.body.appendChild(p);
-});
+})
 const title=document.getElementById("title");
 const content=document.getElementById("contentTextArea");
  async function createPost(){
