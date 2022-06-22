@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css" />
     <link rel="stylesheet" href="node_modules\bootstrap-social\bootstrap-social.css" />
     <link rel="stylesheet" href="styles.css" />
-   
+     <link rel="styesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
     <title>Firebase everything</title>
 </head>
 
@@ -67,7 +67,10 @@
     <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
     <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-   
+ 
+
+
+   "
     
     <script type="module">
   
@@ -117,13 +120,13 @@ p.innerHTML=`
 <div class="col-2 mr-auto">
 <p>author:${doc.data().author}</p>
   </div>
-  <div class="col-2">
+  <div class="col-2 mr-auto text-nowrap">
       <div class="row">
-             <div class="col-6">
-              ${doc.data().likes} Likes
+             <div class="col-6 green">
+              ${doc.data().likes} <i class="fa fa-thumbs-up" aria-hidden="true"></i>
               </div>
-              <div class="col-6">
-                ${doc.data().dislikes} Dislikes
+              <div class="col-6 red">
+                ${doc.data().dislikes} <i class="fa fa-thumbs-down" aria-hidden="true"></i> 
               </div>
               
       </div>
