@@ -147,12 +147,14 @@
         await updateDoc(postRef, {
          likes:increment(1),
        });
+       location.reload();
        }
        const dislike=async(a)=>{
         const postRef = doc(db, 'posts', a);
         await updateDoc(postRef, {
          dislikes:increment(-1),
        });
+       location.reload();
        }
 querySnapshot.forEach((doc) => {
 // doc.data() is never undefined for query doc snapshots
@@ -221,6 +223,7 @@ const likes=document.getElementsByClassName("like")
 for(let i of likes){
   i.addEventListener('click',()=>{
    like(i.getAttribute('data-id'))
+ 
   })
 }
 
@@ -228,6 +231,7 @@ const dislikes=document.getElementsByClassName("dislike")
 for(let i of dislikes){
   i.addEventListener('click',()=>{
    dislike(i.getAttribute('data-id'))
+
   })
 }
     </script>
