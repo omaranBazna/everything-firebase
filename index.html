@@ -217,7 +217,7 @@ document.getElementById("idButton").onclick=async ()=>{
 const likes=document.getElementsByClassName("like")
 for(let i of likes){
   i.addEventListener('click',()=>{
-    console.log("hello")
+    console.log(i.getAttribute('data-id'))
   })
 }
     </script>
