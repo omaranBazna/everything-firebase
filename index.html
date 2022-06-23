@@ -162,7 +162,8 @@ await updateDoc(cityRef, {
     const postRef = doc(db, 'posts', 'post- 81080850');
 
         await updateDoc(postRef, {
-         likes:increment(1)
+         likes:increment(1),
+         dislikes:increment(-1)
        });
        
     
