@@ -143,14 +143,17 @@
  
     let docArray=[]
     const like=async(a)=>{
-      console.log(a)
-        const postRef = doc(db, 'posts', 'post- 81080850');
+        const postRef = doc(db, 'posts', a);
         await updateDoc(postRef, {
          likes:increment(1),
-         dislikes:increment(-1)
        });
        }
-
+       const dislike=async(a)=>{
+        const postRef = doc(db, 'posts', a);
+        await updateDoc(postRef, {
+         dislikes:increment(-1),
+       });
+       }
 querySnapshot.forEach((doc) => {
 // doc.data() is never undefined for query doc snapshots
 
@@ -180,7 +183,7 @@ p.innerHTML=`
              <div class="col-6 green like" data-id="${doc.id}" >
               ${doc.doc.data().likes} <i class="fa fa-thumbs-up" aria-hidden="true"></i>
               </div>
-              <div class="col-6 red">
+              <div class="col-6 red dislike" data-id="${doc.id}">
                 ${doc.doc.data().dislikes} <i class="fa fa-thumbs-down" aria-hidden="true"></i> 
               </div>
               
@@ -218,6 +221,13 @@ const likes=document.getElementsByClassName("like")
 for(let i of likes){
   i.addEventListener('click',()=>{
    like(i.getAttribute('data-id'))
+  })
+}
+
+const dislikes=document.getElementsByClassName("dislike")
+for(let i of dislikes){
+  i.addEventListener('click',()=>{
+   dislike(i.getAttribute('data-id'))
   })
 }
     </script>
