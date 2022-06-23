@@ -109,22 +109,6 @@
  
 
 
-<script >
- // import {getFirestore, collection, doc} from "https://www.gstatic.com/firebasejs/9.8.3/firebase-firestore.js";
-
- // const cityRef = doc(db, 'posts', 'BJ');
-
-// Remove the 'capital' field from the document
-/*
-await updateDoc(cityRef, {
-    capital: deleteField()
-});
-*/
- const like=(a)=>{
-  console.log(a)
-}
-  </script>
-    
     <script type="module">
  
 
@@ -158,15 +142,15 @@ await updateDoc(cityRef, {
     const querySnapshot = await getDocs(q);
  
     let docArray=[]
-    
-    const postRef = doc(db, 'posts', 'post- 81080850');
-
+    const like=async(a)=>{
+      console.log(a)
+        const postRef = doc(db, 'posts', 'post- 81080850');
         await updateDoc(postRef, {
          likes:increment(1),
          dislikes:increment(-1)
        });
-       
-    
+       }
+
 querySnapshot.forEach((doc) => {
 // doc.data() is never undefined for query doc snapshots
 
@@ -193,7 +177,7 @@ p.innerHTML=`
   </div>
   <div class="col-2 mr-auto text-nowrap">
       <div class="row">
-             <div class="col-6 green" onclick="like('${doc.id}')" >
+             <div class="col-6 green like" data-id="${doc.id}" >
               ${doc.doc.data().likes} <i class="fa fa-thumbs-up" aria-hidden="true"></i>
               </div>
               <div class="col-6 red">
@@ -230,8 +214,12 @@ document.getElementById("idButton").onclick=async ()=>{
             await createPost();
         };
 
-
-       
+const likes=document.getElementsByClassName("like")
+for(let i of likes){
+  i.addEventListener('click',()=>{
+    console.log("hello")
+  })
+}
     </script>
 
 </body>
