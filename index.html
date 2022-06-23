@@ -132,7 +132,7 @@ await updateDoc(cityRef, {
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-app.js";
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-analytics.js";
 
-    import {getFirestore, collection, query, where,orderBy, getDocs,doc, setDoc,Timestamp , updateDoc, deleteField } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-firestore.js";
+    import {getFirestore, collection, query, where,orderBy, getDocs,doc, setDoc,Timestamp , updateDoc, increment } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-firestore.js";
     // TODO: Add SDKs for Firebase products that you want to use
     // https://firebase.google.com/docs/web/setup#available-libraries
   
@@ -162,7 +162,7 @@ await updateDoc(cityRef, {
     const postRef = doc(db, 'posts', 'post- 81080850');
 
         await updateDoc(postRef, {
-         likes:100
+         likes:increment(1)
        });
        
     
