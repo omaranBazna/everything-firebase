@@ -100,7 +100,7 @@
     </div>
   </div>
 </div>
-
+<div  id="bodyElement"></div>
 
 
     <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
@@ -109,11 +109,14 @@
  
 
 
-   "
+<script>
+let like=(a)=>{
+  console.log(a)
+}
+  </script>
     
     <script type="module">
-  
-      
+ 
 
     // Import the functions you need from the SDKs you need
     import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-app.js";
@@ -147,45 +150,48 @@
 querySnapshot.forEach((doc) => {
 // doc.data() is never undefined for query doc snapshots
 
-docArray.push(doc);
+docArray=[...docArray,{doc:doc,id:doc.id}];
 });
 docArray.reverse();
+
+
 docArray.forEach((doc)=>{
 
   let p = document.createElement("p");
 p.innerHTML=`
 <div class="container">
 <div class="row">
-<div class="col-12 text-left border bg-primary"><h1> ${doc.data().title}</h1></div>
+<div class="col-12 text-left border bg-primary"><h1> ${doc.doc.data().title}</h1></div>
 </div>
 <div class="row">
-<div class="col-12 text-left border"><p>${doc.data().content}</div>
+<div class="col-12 text-left border"><p>${doc.doc.data().content}</div>
 
 </div>
 <div class="row border bg-secondary text-white">
 <div class="col-2 mr-auto">
-<p>${doc.data().author}</p>
+<p>${doc.doc.data().author}</p>
   </div>
   <div class="col-2 mr-auto text-nowrap">
       <div class="row">
-             <div class="col-6 green">
-              ${doc.data().likes} <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+             <div class="col-6 green" onclick="like('${doc.id}')" >
+              ${doc.doc.data().likes} <i class="fa fa-thumbs-up" aria-hidden="true"></i>
               </div>
               <div class="col-6 red">
-                ${doc.data().dislikes} <i class="fa fa-thumbs-down" aria-hidden="true"></i> 
+                ${doc.doc.data().dislikes} <i class="fa fa-thumbs-down" aria-hidden="true"></i> 
               </div>
               
       </div>
     </div>
   <div class="col-2 ml-auto">
-<p> @${new Date(doc.data().created*1000).getDate()+
-          "/"+(new Date(doc.data().created*1000).getMonth()+1)+"/2022"}</p>
+<p> @${new Date(doc.doc.data().created*1000).getDate()+
+          "/"+(new Date(doc.doc.data().created*1000).getMonth()+1)+"/2022"}</p>
   </div>
 </div>
 </div>
 `
-document.body.appendChild(p);
-})
+document.getElementById("bodyElement").appendChild(p);
+}) 
+
 const title=document.getElementById("title");
 const content=document.getElementById("contentTextArea");
  async function createPost(){
@@ -203,6 +209,9 @@ await setDoc(doc(db, "posts", `post- ${Math.floor(Math.random()*100000000)+1}`),
 document.getElementById("idButton").onclick=async ()=>{
             await createPost();
         };
+
+
+       
     </script>
 
 </body>
