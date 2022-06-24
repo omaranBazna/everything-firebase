@@ -157,7 +157,7 @@ let uploadF=async(file)=>{
      });
     }
 document.getElementById("uploadBtn").addEventListener('click',()=>{
-  uploadF(document.getElementById("file").target.value);
+  uploadF(document.getElementById("file").files[0]);
 })
 
 
