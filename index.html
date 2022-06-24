@@ -100,7 +100,8 @@
     </div>
   </div>
 </div>
-<input type="file" >upload video</input>
+<input type="file" id="file" >upload video</input>
+<button id="uploadBtn">Upload</button>
 <div  id="bodyElement"></div>
 
 
@@ -118,6 +119,7 @@
     import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-analytics.js";
 
     import {getFirestore, collection, query, where,orderBy, getDocs,doc, setDoc,Timestamp , updateDoc, increment } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-firestore.js";
+    import {getStorage, ref}  from "https://www.gstatic.com/firebasejs/9.8.3/firebase-firestore.js";
     // TODO: Add SDKs for Firebase products that you want to use
     // https://firebase.google.com/docs/web/setup#available-libraries
   
@@ -143,6 +145,23 @@
     const querySnapshot = await getDocs(q);
  
     let docArray=[]
+
+   
+        const storage = getStorage();
+const storageRef = ref(storage, 'some-child');
+
+// 'file' comes from the Blob or File API
+let uploadF=async(file)=>{
+   uploadBytes(storageRef, file).then((snapshot) => {
+  console.log('Uploaded a blob or file!');
+     });
+    }
+document.getElementById("uploadBtn").addEventListener('click',()=>{
+  uploadF(document.getElementById("file").target.value);
+})
+
+
+
     const like=async(a)=>{
         const postRef = doc(db, 'posts', a);
         await updateDoc(postRef, {
